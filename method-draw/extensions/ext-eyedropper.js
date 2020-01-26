@@ -21,7 +21,7 @@ methodDraw.addExtension("eyedropper", function(S) {
       ChangeElementCommand = svgedit.history.ChangeElementCommand,
       addToHistory = function(cmd) { svgCanvas.undoMgr.addCommandToHistory(cmd); },
       currentStyle = {fillPaint: "red", fillOpacity: 1.0,
-              strokePaint: "black", strokeOpacity: 1.0, 
+              strokePaint: "black", strokeOpacity: 1.0,
               strokeWidth: 5, strokeDashArray: null,
               opacity: 1.0,
               strokeLinecap: 'butt',
@@ -34,7 +34,7 @@ methodDraw.addExtension("eyedropper", function(S) {
       var tool = $('#tool_eyedropper');
 
     }
-    
+
     var getPaint = function(color, opac, type) {
       // update the editor's fill paint
       var opts = null;
@@ -48,7 +48,7 @@ methodDraw.addExtension("eyedropper", function(S) {
 
         opts = { alpha: opac };
         opts[refElem.tagName] = refElem;
-      } 
+      }
       else if (color.indexOf("#") === 0) {
         opts = {
           alpha: opac,
@@ -63,24 +63,24 @@ methodDraw.addExtension("eyedropper", function(S) {
       }
       return new $.jGraduate.Paint(opts);
     };
-    
+
     return {
       name: "eyedropper",
-      svgicons: "extensions/eyedropper-icon.xml",
+      svgicons: methodDraw.curConfig.extPath + "eyedropper-icon.xml",
       buttons: [{
         id: "tool_eyedropper",
         type: "mode",
         title: "Eye Dropper Tool",
         position: 8,
         key: "I",
-        icon: "extensions/eyedropper.png",
+        icon: methodDraw.curConfig.imgPath + "eyedropper.png",
         events: {
           "click": function() {
             svgCanvas.setMode("eyedropper");
           }
         }
       }],
-      
+
       mouseDown: function(opts) {
         var mode = svgCanvas.getMode();
         var e = opts.event;
